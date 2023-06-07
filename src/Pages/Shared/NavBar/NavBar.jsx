@@ -15,7 +15,7 @@ const NavBar = () => {
     
     return (
         <>
-         <nav className="flex items-center justify-between bg-gray-800 p-4">
+         <nav className=" flex items-center justify-between bg-gray-800 p-4 mb-10">
       <div className="flex items-center">
         
         <Link to="/" className="text-white text-lg font-semibold">
