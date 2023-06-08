@@ -1,62 +1,98 @@
 [
-    {
-      "_id": 1,
-      "name": "John Smith",
-      "image": "https://i.ibb.co/gjRg9bM/1.jpg",
-      "students": 40
-    },
-    {
-      "_id": 2,
-      "name": "Emily Johnson",
-      "image": "https://i.ibb.co/nw5rQG6/2.jpg",
-      "students": 35
-    },
-    {
-      "_id": 3,
-      "name": "Michael Davis",
-      "image": "https://i.ibb.co/QvWW2md/3.jpg",
-      "students": 30
-    },
-    {
-      "_id": 4,
-      "name": "Sarah Thompson",
-      "image": "https://i.ibb.co/zmbd9VH/4.jpg",
-      "students": 28
-    },
-    {
-      "_id": 5,
-      "name": "David Wilson",
-      "image": "https://i.ibb.co/gjRg9bM/1.jpg",
-      "students": 25
-    },
-    {
-      "_id": 6,
-      "name": "Jessica Lee",
-      "image": "https://i.ibb.co/02qkZWq/6.jpg",
-      "students": 22
-    },
-    {
-      "_id": 7,
-      "name": "Daniel Harris",
-      "image": "https://i.ibb.co/SdQJNZf/8.jpg",
-      "students": 20
-    },
-    {
-      "_id": 8,
-      "name": "Olivia Brown",
-      "image": "https://i.ibb.co/1Zb3XH6/13.jpg",
-      "students": 18
-    },
-    {
-      "_id": 9,
-      "name": "Matthew Taylor",
-      "image": "https://i.ibb.co/2cpmzWV/9.jpg",
-      "students": 15
-    },
-    {
-      "_id": 10,
-      "name": "Sophia Martinez",
-      "image": "https://i.ibb.co/5r2sh7Q/14.jpg",
-      "students": 12
-    }
-  ]
+  {
+    "_id": 1,
+    "name": "Emily Brown",
+    "email": "emily@example.com",
+    "image": "https://i.ibb.co/gjRg9bM/1.jpg",
+    "numberOfClasses": 4,
+    "students": 40,
+    "classesTaken": ["Contemporary Dance", "Ballet", "Jazz Funk", "Latin Dance"]
+  },
+  {
+    "_id": 2,
+    "name": "Michael Johnson",
+    "email": "michael@example.com",
+    "image": "https://i.ibb.co/nw5rQG6/2.jpg",
+    "numberOfClasses": 2,
+    "students": 35,
+    "classesTaken": ["Street Dance", "Tap Dance"]
+  },
+  {
+    "_id": 3,
+    "name": "Sophia Davis",
+    "email": "sophia@example.com",
+    "image": "https://i.ibb.co/QvWW2md/3.jpg",
+    "numberOfClasses": 3,
+    "students": 30,
+    "classesTaken": ["Samba", "Aerial Dance", "Bollywood Dance"]
+  },
+  {
+    "_id": 4,
+    "name": "Daniel Wilson",
+    "email": "daniel@example.com",
+    "image": "https://i.ibb.co/zmbd9VH/4.jpg",
+    "numberOfClasses": 1,
+    "students": 28,
+    "classesTaken": ["Swing Dance"]
+  },
+  {
+    "_id": 5,
+    "name": "Olivia Thompson",
+    "email": "olivia@example.com",
+    "image": "https://i.ibb.co/gjRg9bM/1.jpg",
+    "numberOfClasses": 5,
+    "students": 25,
+    "classesTaken": [
+      "Flamenco",
+      "Irish Dance",
+      "Ballroom Dance",
+      "Belly Dance",
+      "Krumping"
+    ]
+  },
+  {
+    "_id": 6,
+    "name": "David Martinez",
+    "email": "david@example.com",
+    "image": "https://i.ibb.co/02qkZWq/6.jpg",
+    "numberOfClasses": 2,
+    "students": 22,
+    "classesTaken": ["Folk Dance", "Pole Dance"]
+  },
+  {
+    "_id": 7,
+    "name": "Ava Anderson",
+    "email": "ava@example.com",
+    "image": "https://i.ibb.co/SdQJNZf/8.jpg",
+    "numberOfClasses": 3,
+    "students": 20,
+    "classesTaken": ["Hula Dance", "Tap Dance", "Tango"]
+  },
+  {
+    "_id": 8,
+    "name": "Ethan Lewis",
+    "email": "ethan@example.com",
+    "image": "https://i.ibb.co/1Zb3XH6/13.jpg",
+    "numberOfClasses": 1,
+    "students": 18,
+    "classesTaken": ["Clogging"]
+  },
+  {
+    "_id": 9,
+    "name": "Mia Johnson",
+    "email": "mia@example.com",
+    "image": "https://i.ibb.co/2cpmzWV/9.jpg",
+    "numberOfClasses": 4,
+    "students": 15,
+    "classesTaken": ["Hip Hop", "Capoeira", "Lyrical Dance", "Pole Dance"]
+  },
+  {
+    "_id": 10,
+    "name": "Noah Davis",
+    "email": "noah@example.com",
+    "image": "https://i.ibb.co/5r2sh7Q/14.jpg",
+    "numberOfClasses": 3,
+    "students": 12,
+    "classesTaken": ["Bhangra", "Contemporary Dance", "Bollywood Dance"]
+  }
+]

@@ -37,7 +37,7 @@ const Instructor = () => {
             <img
               src={instructor.image}
               alt={instructor.name}
-              className="w-full h-32 object-cover mb-4"
+              className="w-full h-36 object-cover mb-4"
             />
             <h3 className="text-xl font-semibold">{instructor.name}</h3>
             <p>Students: {instructor.students}</p>
