@@ -1,27 +1,12 @@
-import  { useState, useEffect } from 'react';
+
 import { Helmet } from 'react-helmet-async';
 import SectionTitle from '../Shared/SectionTitle/SectionTitle';
 import Cover from '../Shared/Cover/Cover';
 import img from '../../assets/imges/cover/1.jpg';
+import useInstructors from '../../hooks/useInstructors';
 
 const InstructorsPage = () => {
-  const [instructorsData, setInstructorsData] = useState([]);
-
-  useEffect(() => {
-    // Fetch the data from instructors.json
-    const fetchData = async () => {
-      try {
-        const response = await fetch('instructors.json');
-        const data = await response.json();
-        setInstructorsData(data);
-      } catch (error) {
-        console.error('Error fetching instructors data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
+  const [instructorsData] =useInstructors();
   return (
     <div>
       <Helmet>Instructor</Helmet>

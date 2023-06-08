@@ -1,26 +1,12 @@
 // import React from 'react';
 
-import { useEffect, useState } from "react";
+
 import SectionTitle from "../../../Shared/SectionTitle/SectionTitle";
+import useInstructors from "../../../../hooks/useInstructors";
 
 const Instructor = () => {
-  const [instructors, setInstructors] = useState([]);
-
-  useEffect(() => {
-    const fetchInstructors = async () => {
-      try {
-       
-        const response = await fetch("instructors.json");
-        const data = await response.json();
-        setInstructors(data);
-      } catch (error) {
-        console.error("Error fetching instructors:", error);
-      }
-    };
-
-    fetchInstructors();
-  }, []);
-  const sortedInstructors = instructors.sort((a, b) => b.students - a.students);
+  const [instructorsData] =useInstructors();
+  const sortedInstructors = instructorsData.sort((a, b) => b.students - a.students);
 
   // Get the top 6 instructors
   const topInstructors = sortedInstructors.slice(0, 6);
