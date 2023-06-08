@@ -1,8 +1,11 @@
 // import React from 'react';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FaEye } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const {
@@ -19,10 +22,14 @@ const Login = () => {
   const onSubmit = (data) => {
     // Implement logic here
     console.log(data);
+    toast.success("Login successful!");
   };
 
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center items-center">
+        <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div className="max-w-md w-full px-6 py-8 bg-white rounded-lg shadow-md">
         <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -91,6 +98,7 @@ const Login = () => {
           </Link>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

@@ -1,4 +1,7 @@
 import SectionTitle from "../../../Shared/SectionTitle/SectionTitle";
+import pic1 from '../../../../assets/imges/event/1.jpg';
+import pic2 from '../../../../assets/imges/event/2.jpg';
+import pic3 from '../../../../assets/imges/event/3.jpg';
 
 const UpcomingEvents = () => {
   return (
@@ -13,7 +16,7 @@ const UpcomingEvents = () => {
             <div className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
               <div className="bg-white rounded-lg shadow p-6">
                 <img
-                  src="https://i.ibb.co/example-event1.jpg"
+                  src={pic1}
                   alt="Event 1"
                   className="w-full h-48 object-cover rounded-lg mb-4"
                 />
@@ -32,7 +35,7 @@ const UpcomingEvents = () => {
             <div className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
               <div className="bg-white rounded-lg shadow p-6">
                 <img
-                  src="https://i.ibb.co/example-event2.jpg"
+                  src={pic2}
                   alt="Event 2"
                   className="w-full h-48 object-cover rounded-lg mb-4"
                 />
@@ -49,7 +52,7 @@ const UpcomingEvents = () => {
             <div className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
               <div className="bg-white rounded-lg shadow p-6">
                 <img
-                  src="https://i.ibb.co/example-event3.jpg"
+                  src={pic3}
                   alt="Event 3"
                   className="w-full h-48 object-cover rounded-lg mb-4"
                 />

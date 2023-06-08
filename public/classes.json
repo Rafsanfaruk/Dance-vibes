@@ -1,0 +1,83 @@
+[
+    {
+      "_id": 1,
+      "name": "Ballet Class",
+      "image": "https://i.ibb.co/2cpmzWV/9.jpg",
+      "instructor": "Jane Doe",
+      "availableSeats": 10,
+      "price": 50
+    },
+    {
+      "_id": 2,
+      "name": "Hip Hop Dance",
+      "image": "https://i.ibb.co/SdQJNZf/8.jpg",
+      "instructor": "John Smith",
+      "availableSeats": 0,
+      "price": 40
+    },
+    {
+      "_id": 3,
+      "name": "Contemporary Dance",
+      "image": "https://i.ibb.co/1d6PSfc/Tap-Dance.jpg",
+      "instructor": "Emily Johnson",
+      "availableSeats": 5,
+      "price": 45
+    },
+    {
+      "_id": 4,
+      "name": "Salsa Dance",
+      "image": "https://i.ibb.co/HtqrCtt/Contemporary-Dance.jpg",
+      "instructor": "Carlos Rodriguez",
+      "availableSeats": 8,
+      "price": 35
+    },
+    {
+      "_id": 5,
+      "name": "Tap Dance",
+      "image": "https://i.ibb.co/1XKzRCb/Ballet-Class.jpg",
+      "instructor": "Sarah Thompson",
+      "availableSeats": 3,
+      "price": 30
+    },
+    {
+      "_id": 6,
+      "name": "Jazz Dance",
+      "image": "https://i.ibb.co/1XKzRCb/Ballet-Class.jpg",
+      "instructor": "Michael Anderson",
+      "availableSeats": 15,
+      "price": 40
+    },
+    {
+      "_id": 7,
+      "name": "Latin Dance",
+      "image": "https://i.ibb.co/PskBtCw/Hip-Hop-Dance.jpg",
+      "instructor": "Isabella Martinez",
+      "availableSeats": 12,
+      "price": 35
+    },
+    {
+      "_id": 8,
+      "name": "Breakdance",
+      "image": "https://i.ibb.co/HtqrCtt/Contemporary-Dance.jpg",
+      "instructor": "David Wilson",
+      "availableSeats": 6,
+      "price": 40
+    },
+    {
+      "_id": 9,
+      "name": "Bollywood Dance",
+      "image": "https://i.ibb.co/Bf65dGL/Salsa-Dance.jpg",
+      "instructor": "Priya Sharma",
+      "availableSeats": 20,
+      "price": 30
+    },
+    {
+      "_id": 10,
+      "name": "Ballroom Dance",
+      "image": "https://i.ibb.co/1d6PSfc/Tap-Dance.jpg",
+      "instructor": "Alexander Brown",
+      "availableSeats": 7,
+      "price": 45
+    }
+  ]
+  
