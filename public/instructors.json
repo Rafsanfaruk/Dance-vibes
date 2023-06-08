@@ -1,0 +1,62 @@
+[
+    {
+      "_id": 1,
+      "name": "John Smith",
+      "image": "https://i.ibb.co/gjRg9bM/1.jpg",
+      "students": 40
+    },
+    {
+      "_id": 2,
+      "name": "Emily Johnson",
+      "image": "https://i.ibb.co/nw5rQG6/2.jpg",
+      "students": 35
+    },
+    {
+      "_id": 3,
+      "name": "Michael Davis",
+      "image": "https://i.ibb.co/QvWW2md/3.jpg",
+      "students": 30
+    },
+    {
+      "_id": 4,
+      "name": "Sarah Thompson",
+      "image": "https://i.ibb.co/zmbd9VH/4.jpg",
+      "students": 28
+    },
+    {
+      "_id": 5,
+      "name": "David Wilson",
+      "image": "https://i.ibb.co/gjRg9bM/1.jpg",
+      "students": 25
+    },
+    {
+      "_id": 6,
+      "name": "Jessica Lee",
+      "image": "https://i.ibb.co/02qkZWq/6.jpg",
+      "students": 22
+    },
+    {
+      "_id": 7,
+      "name": "Daniel Harris",
+      "image": "https://i.ibb.co/SdQJNZf/8.jpg",
+      "students": 20
+    },
+    {
+      "_id": 8,
+      "name": "Olivia Brown",
+      "image": "https://i.ibb.co/1Zb3XH6/13.jpg",
+      "students": 18
+    },
+    {
+      "_id": 9,
+      "name": "Matthew Taylor",
+      "image": "https://i.ibb.co/2cpmzWV/9.jpg",
+      "students": 15
+    },
+    {
+      "_id": 10,
+      "name": "Sophia Martinez",
+      "image": "https://i.ibb.co/5r2sh7Q/14.jpg",
+      "students": 12
+    }
+  ]
