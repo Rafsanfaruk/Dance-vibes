@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../providers/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
   const {
@@ -16,14 +17,20 @@ const Registration = () => {
     reset,
   } = useForm();
 
-  const { createUser } =useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate =useNavigate();
 
   const onSubmit = (data) => {
-    createUser(data.email, data.password)
-    .then( result => {
+    createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
-    })
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          console.log("user profile updated successfully");
+          navigate('/');
+        })
+        .catch((err) => console.log(err));
+    });
 
     // Show success toast
     toast.success("Registration successful!");

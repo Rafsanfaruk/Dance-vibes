@@ -1,14 +1,18 @@
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FaEye } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
-  const {signIn} =useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const {
     register,
@@ -23,22 +27,24 @@ const Login = () => {
   };
 
   const onSubmit = (data) => {
-    const { email, password } = data; 
-  
+    const { email, password } = data;
+
     signIn(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        toast.success("Login successful!");
+        reset();
+        navigate(from,{replace:true}); 
       })
       .catch((error) => {
         console.log(error);
+        toast.error("Login failed.");
       });
-  
+
     console.log(data);
-    toast.success("Login successful!");
-    reset();
   };
-  
+
 
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center items-center">

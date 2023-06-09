@@ -1,27 +1,32 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
-      .catch((error) => console.log(error));
-  };
-
+      .then(() => {
+        toast.success("Logged out successfully!");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Error logging out.");
+      });
+    }
   const navOptions = (
     <>
       <li>
-        <Link to="/" className="text-white hover:text-gray-300 px-2 py-1">
+        <Link to="/" className="text-black text-xl hover:text-gray-300 px-2 py-1">
           Home
         </Link>
       </li>
       <li>
         <Link
           to="/instructors"
-          className="text-white hover:text-gray-300 px-2 py-1"
+          className="text-black text-xl hover:text-gray-300 px-2 py-1"
         >
           Instructors
         </Link>
@@ -29,7 +34,7 @@ const NavBar = () => {
       <li>
         <Link
           to="/classes"
-          className="text-white hover:text-gray-300 px-2 py-1"
+          className="text-black text-xl hover:text-gray-300 px-2 py-1"
         >
           Classes
         </Link>
@@ -37,11 +42,11 @@ const NavBar = () => {
 
       {user ? (
         <>
-          <li className="text-white px-2 py-1">{user?.displayName}</li>
+          <li className="text-black text-xl px-2 py-1">{user?.displayName}</li>
           <li>
             <button
               onClick={handleLogOut}
-              className="text-white hover:text-gray-300 px-2 py-1"
+              className="text-black text-xl hover:text-gray-300 px-2 py-1"
             >
               Logout
             </button>
@@ -51,7 +56,7 @@ const NavBar = () => {
         <li>
           <Link
             to="/login"
-            className="text-white hover:text-gray-300 px-2 py-1"
+            className="text-black text-xl hover:text-gray-300 px-2 py-1"
           >
             Login
           </Link>
@@ -61,7 +66,7 @@ const NavBar = () => {
   );
 
   return (
-    <nav className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-black text-white">
+    <nav className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-black text-black">
       <div className="navbar-start">
         <div className="dropdown">
           <label
@@ -102,9 +107,10 @@ const NavBar = () => {
           to="/"
           className="btn my-btn"
         >
-          Get started
+        GET MemberShip
         </Link>
       </div>
+      <ToastContainer />
     </nav>
   );
 };
