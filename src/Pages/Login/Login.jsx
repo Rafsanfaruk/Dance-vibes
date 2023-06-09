@@ -82,12 +82,12 @@ const Login = () => {
               <p className="text-red-500 text-xs mt-1">Password is required.</p>
             )}
           </div>
-          <button
+          <input
             type="submit"
             className="w-full my-btn"
           >
             Login
-          </button>
+          </input>
         </form>
         <div className="text-center mt-4">
           <Link

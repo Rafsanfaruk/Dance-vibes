@@ -14,7 +14,9 @@ const Classes = () => {
 
   return (
     <div>
-      <Helmet>Our Classes</Helmet>
+       <Helmet>
+        <title>Classes</title>
+      </Helmet>
       <Cover
         img={img}
         title="Our Classes"

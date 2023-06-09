@@ -9,7 +9,9 @@ const InstructorsPage = () => {
   const [instructorsData] =useInstructors();
   return (
     <div>
-      <Helmet>Instructor</Helmet>
+      <Helmet>
+        <title>Instruction</title>
+      </Helmet>
       <Cover
         img={img}
         title="Our Instructors"
