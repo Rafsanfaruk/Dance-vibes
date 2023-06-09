@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Registration = () => {
   const {
@@ -180,6 +181,7 @@ const Registration = () => {
             </div>
             <input className="my-btn w-full" type="submit" value="Register" />
           </form>
+        <SocialLogin />
         </div>
         <ToastContainer />
       </div>

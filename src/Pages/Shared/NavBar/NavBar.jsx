@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { BiSelectMultiple } from "react-icons/bi";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -15,11 +16,14 @@ const NavBar = () => {
         console.log(error);
         toast.error("Error logging out.");
       });
-    }
+  };
   const navOptions = (
     <>
       <li>
-        <Link to="/" className="text-black text-xl hover:text-gray-300 px-2 py-1">
+        <Link
+          to="/"
+          className="text-black text-xl hover:text-gray-300 px-2 py-1"
+        >
           Home
         </Link>
       </li>
@@ -37,6 +41,14 @@ const NavBar = () => {
           className="text-black text-xl hover:text-gray-300 px-2 py-1"
         >
           Classes
+        </Link>
+      </li>
+      <li>
+        <Link to="/">
+          <button className="btn bg-gray-500 gap-2">
+            <BiSelectMultiple />
+            <div className="badge badge-secondary">+100</div>
+          </button>
         </Link>
       </li>
 
@@ -69,10 +81,7 @@ const NavBar = () => {
     <nav className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-black text-black">
       <div className="navbar-start">
         <div className="dropdown">
-          <label
-            tabIndex={0}
-            className="btn btn-ghost lg:hidden"
-          >
+          <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -103,11 +112,8 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1">{navOptions}</ul>
       </div>
       <div className="navbar-end">
-        <Link
-          to="/"
-          className="btn my-btn"
-        >
-        GET MemberShip
+        <Link to="/" className="btn my-btn">
+          GET MemberShip
         </Link>
       </div>
       <ToastContainer />

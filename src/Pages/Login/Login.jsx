@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { FaEye } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../providers/AuthProvider";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -117,6 +118,7 @@ const Login = () => {
             Dont have an account? Register here.
           </Link>
         </div>
+      <SocialLogin />
       </div>
       <ToastContainer />
     </div>
