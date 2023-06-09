@@ -1,16 +1,19 @@
-// import React from 'react';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FaEye } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
+  const {signIn} =useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const [showPassword, setShowPassword] = useState(false);
@@ -20,14 +23,26 @@ const Login = () => {
   };
 
   const onSubmit = (data) => {
-    // Implement logic here
+    const { email, password } = data; 
+  
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  
     console.log(data);
     toast.success("Login successful!");
+    reset();
   };
+  
 
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center items-center">
-        <Helmet>
+      <Helmet>
         <title>Login</title>
       </Helmet>
       <div className="max-w-md w-full px-6 py-8 bg-white rounded-lg shadow-md">
@@ -84,10 +99,9 @@ const Login = () => {
           </div>
           <input
             type="submit"
+            value="Login"
             className="w-full my-btn"
-          >
-            Login
-          </input>
+          />
         </form>
         <div className="text-center mt-4">
           <Link

@@ -1,76 +1,112 @@
-// import React from 'react';
-
-import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 import { Link } from "react-router-dom";
 
-
 const NavBar = () => {
-  const [isMenuOpen, setMenuOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
 
-  const toggleMenu = () => {
-    setMenuOpen(!isMenuOpen);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
   };
 
-  return (
+  const navOptions = (
     <>
-      <nav className="flex items-center justify-between bg-gray-800 p-4 mb-10">
-        <div className="flex items-center">
-          <Link to="/" className="text-white text-lg font-semibold">
-            Dance Vibes
-          </Link>
-          <button
-            className="ml-4 text-white block lg:hidden"
-            onClick={toggleMenu}
-          >
-            Menu
-          </button>
-        </div>
-        <div
-          className={`lg:flex items-center ${isMenuOpen ? "block" : "hidden"}`}
+      <li>
+        <Link to="/" className="text-white hover:text-gray-300 px-2 py-1">
+          Home
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/instructors"
+          className="text-white hover:text-gray-300 px-2 py-1"
         >
-          <Link to="/" className="text-white mt-4 lg:mt-0 lg:ml-4 block">
-            Home
-          </Link>
+          Instructors
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/classes"
+          className="text-white hover:text-gray-300 px-2 py-1"
+        >
+          Classes
+        </Link>
+      </li>
+
+      {user ? (
+        <>
+          <li className="text-white px-2 py-1">{user?.displayName}</li>
+          <li>
+            <button
+              onClick={handleLogOut}
+              className="text-white hover:text-gray-300 px-2 py-1"
+            >
+              Logout
+            </button>
+          </li>
+        </>
+      ) : (
+        <li>
           <Link
-            to="/instructors"
-            className="text-white mt-4 lg:mt-0 lg:ml-4 block"
+            to="/login"
+            className="text-white hover:text-gray-300 px-2 py-1"
           >
-            Instructors
+            Login
           </Link>
-          <Link to="/classes" className="text-white mt-4 lg:mt-0 lg:ml-4 block">
-            Classes
-          </Link>
-          {user ? (
-            <>
-              <Link
-                to="/dashboard"
-                className="text-white mt-4 lg:mt-0 lg:ml-4 block"
-              >
-                Dashboard
-              </Link>
-              <img
-                src={user.profilePicture}
-                alt="Profile"
-                className="w-8 h-8 rounded-full mt-4 lg:mt-0 lg:ml-4"
-              />
-              <button
-                onClick={logOut}
-                className="text-white ml-4 focus:outline-none"
-              >
-                Logout
-              </button>
-            </>
-          ) : (
-            <Link to="/login" className="text-white mt-4 lg:mt-0 lg:ml-4 block">
-              Login
-            </Link>
-          )}
-        </div>
-      </nav>
+        </li>
+      )}
     </>
+  );
+
+  return (
+    <nav className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-black text-white">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <label
+            tabIndex={0}
+            className="btn btn-ghost lg:hidden"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
+          <ul
+            tabIndex={0}
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            {navOptions}
+          </ul>
+        </div>
+        <Link to="/" className="btn btn-ghost normal-case text-xl">
+          Dance Vibes
+        </Link>
+      </div>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">{navOptions}</ul>
+      </div>
+      <div className="navbar-end">
+        <Link
+          to="/"
+          className="btn my-btn"
+        >
+          Get started
+        </Link>
+      </div>
+    </nav>
   );
 };
 
 export default NavBar;
-
