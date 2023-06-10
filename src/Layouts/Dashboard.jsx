@@ -6,16 +6,12 @@ import { FiLogOut } from "react-icons/fi";
 import { AiFillSetting } from "react-icons/ai";
 import { MdClass } from "react-icons/md";
 import useCart from "../hooks/useCart";
-// import { useContext } from "react";
-// import { AuthContext } from "../providers/AuthProvider";
+// import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart();
-  // const { user } = useContext(AuthContext);
-
-  const isAdmin =true;
-  // const isAdmin = user && user.role === "admin";
-  // const isInstructor = user && user.role === "instructor";
+  const isAdmin = true;
+  const isInstructor = true; // Add this line to check if the user is an instructor
 
   return (
     <div className="drawer lg:drawer-open">
@@ -32,20 +28,10 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 h-full bg-gradient-to-b from-purple-500 to-blue-500 text-black  text-xl">
-          {/* Sidebar content here */}
-          {/* {isInstructor && (
+        <ul className="menu p-4 w-80 h-full bg-gradient-to-b from-purple-500 to-blue-500 text-black text-xl">
+          {isAdmin ? (
             <>
               <li>
-                <NavLink to="/dashboard/myclasses">
-                  <MdClass></MdClass> My Classes
-                </NavLink>
-              </li>
-            </>
-          )} */}
-          {isAdmin && (
-            <>
-            <li>
                 <NavLink to="/dashboard/adminhome">
                   <FaHome></FaHome>Admin Home
                 </NavLink>
@@ -61,9 +47,20 @@ const Dashboard = () => {
                 </NavLink>
               </li>
             </>
-          )}
-          {/* {!isInstructor && !isAdmin && ( */}
-          { !isAdmin && (
+          ) : isInstructor ? ( // Add this condition to check if the user is an instructor
+            <>
+              <li>
+                <NavLink to="/dashboard/instructorhome">
+                  <FaHome></FaHome>Instructor Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/myclasses">
+                  <MdClass></MdClass> My Classes
+                </NavLink>
+              </li>
+            </>
+          ) : (
             <>
               <li>
                 <NavLink to="/dashboard/userhome">
@@ -91,6 +88,7 @@ const Dashboard = () => {
               </li>
             </>
           )}
+
           <br></br>
           <div className="divider"></div>
           <li>
