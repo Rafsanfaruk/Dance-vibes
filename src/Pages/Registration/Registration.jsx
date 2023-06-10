@@ -19,7 +19,7 @@ const Registration = () => {
   } = useForm();
 
   const { createUser, updateUserProfile } = useContext(AuthContext);
-  const navigate =useNavigate();
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     createUser(data.email, data.password).then((result) => {
@@ -27,8 +27,21 @@ const Registration = () => {
       console.log(loggedUser);
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          console.log("user profile updated successfully");
-          navigate('/');
+          const savedUser ={name:data.name,email:data.email}
+          fetch("http://localhost:5000/users",{
+            method: "POST",
+            headers:{
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify(savedUser)
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                console.log("user profile updated successfully");
+                navigate("/");
+              }
+            });
         })
         .catch((err) => console.log(err));
     });
@@ -181,7 +194,7 @@ const Registration = () => {
             </div>
             <input className="my-btn w-full" type="submit" value="Register" />
           </form>
-        <SocialLogin />
+          <SocialLogin />
         </div>
         <ToastContainer />
       </div>

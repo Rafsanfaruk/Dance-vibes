@@ -6,15 +6,23 @@ import { FiLogOut } from "react-icons/fi";
 import { AiFillSetting } from "react-icons/ai";
 import { MdClass } from "react-icons/md";
 import useCart from "../hooks/useCart";
+// import { useContext } from "react";
+// import { AuthContext } from "../providers/AuthProvider";
 
 const Dashboard = () => {
   const [cart] = useCart();
+  // const { user } = useContext(AuthContext);
+
+  const isAdmin =true;
+  // const isAdmin = user && user.role === "admin";
+  // const isInstructor = user && user.role === "instructor";
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
         {/* Page content here */}
-        <Outlet></Outlet>
+        <Outlet />
         <label
           htmlFor="my-drawer-2"
           className="btn btn-primary drawer-button lg:hidden"
@@ -26,32 +34,63 @@ const Dashboard = () => {
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 h-full bg-gradient-to-b from-purple-500 to-blue-500 text-black  text-xl">
           {/* Sidebar content here */}
-
-          <li>
-            <NavLink to="dashboard/userhome">
-              <FaHome></FaHome>User Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/payment">
-              <FaWallet></FaWallet>Payment
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/myselectedclasses">
-              <BiSelectMultiple />
-              My Selected Classes
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/dashboard/enrollclasses">
-              <MdClass></MdClass> My Enrolled Classes
-              <span className="badge badge-primary badge-lg">
-                +{cart?.length || 0}
-              </span>
-            </NavLink>
-          </li>
+          {/* {isInstructor && (
+            <>
+              <li>
+                <NavLink to="/dashboard/myclasses">
+                  <MdClass></MdClass> My Classes
+                </NavLink>
+              </li>
+            </>
+          )} */}
+          {isAdmin && (
+            <>
+            <li>
+                <NavLink to="/dashboard/adminhome">
+                  <FaHome></FaHome>Admin Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/manageclasses">
+                  <MdClass></MdClass> Manage Classes
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/allusers">
+                  <FcContacts></FcContacts> Manage Users
+                </NavLink>
+              </li>
+            </>
+          )}
+          {/* {!isInstructor && !isAdmin && ( */}
+          { !isAdmin && (
+            <>
+              <li>
+                <NavLink to="/dashboard/userhome">
+                  <FaHome></FaHome>User Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/payment">
+                  <FaWallet></FaWallet>Payment
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/myselectedclasses">
+                  <BiSelectMultiple />
+                  My Selected Classes
+                  <span className="badge badge-primary badge-lg">
+                    +{cart?.length || 0}
+                  </span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/enrollclasses">
+                  <MdClass></MdClass> My Enrolled Classes
+                </NavLink>
+              </li>
+            </>
+          )}
           <br></br>
           <div className="divider"></div>
           <li>
@@ -66,7 +105,7 @@ const Dashboard = () => {
           </li>
           <li>
             <NavLink to="/dashboard/sitting">
-              <AiFillSetting></AiFillSetting> Sittings
+              <AiFillSetting></AiFillSetting> Settings
             </NavLink>
           </li>
           <li>
