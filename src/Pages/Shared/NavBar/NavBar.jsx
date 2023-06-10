@@ -3,9 +3,11 @@ import { AuthContext } from "../../../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { BiSelectMultiple } from "react-icons/bi";
+import useCart from "../../../hooks/useCart";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [cart] =useCart();
 
   const handleLogOut = () => {
     logOut()
@@ -44,10 +46,10 @@ const NavBar = () => {
         </Link>
       </li>
       <li>
-        <Link to="/">
+        <Link to="/dashboard/mycart">
           <button className="btn bg-gray-500 gap-2">
             <BiSelectMultiple />
-            <div className="badge badge-secondary">+100</div>
+            <div className="badge badge-primary badge-lg">+{cart?.length || 0}</div>
           </button>
         </Link>
       </li>
