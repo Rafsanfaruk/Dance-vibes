@@ -1,11 +1,14 @@
-import { Link, Outlet } from "react-router-dom";
-import { BiSelectMultiple,BiSelection } from "react-icons/bi";
-import { FaWallet,FaHome, } from "react-icons/fa";
+import { NavLink, Outlet } from "react-router-dom";
+import { BiSelectMultiple } from "react-icons/bi";
+import { FaWallet, FaHome } from "react-icons/fa";
 import { FcContacts } from "react-icons/fc";
 import { FiLogOut } from "react-icons/fi";
 import { AiFillSetting } from "react-icons/ai";
+import { MdClass } from "react-icons/md";
+import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
+  const [cart] = useCart();
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -21,33 +24,55 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 h-full bg-gradient-to-b from-purple-500 to-blue-500 text-black font-semibold text-xl">
+        <ul className="menu p-4 w-80 h-full bg-gradient-to-b from-purple-500 to-blue-500 text-black  text-xl">
           {/* Sidebar content here */}
-          
+
           <li>
-            <Link><FaHome></FaHome>User Home</Link>
+            <NavLink to="dashboard/userhome">
+              <FaHome></FaHome>User Home
+            </NavLink>
           </li>
           <li>
-            <Link><FaWallet></FaWallet>Payment</Link>
+            <NavLink to="/dashboard/payment">
+              <FaWallet></FaWallet>Payment
+            </NavLink>
           </li>
           <li>
-            <Link><BiSelectMultiple />My Cart</Link>
+            <NavLink to="/dashboard/myselectedclasses">
+              <BiSelectMultiple />
+              My Selected Classes
+            </NavLink>
           </li>
+
           <li>
-            <Link><BiSelection></BiSelection> Classes</Link>
+            <NavLink to="/dashboard/enrollclasses">
+              <MdClass></MdClass> My Enrolled Classes
+              <span className="badge badge-primary badge-lg">
+                +{cart?.length || 0}
+              </span>
+            </NavLink>
           </li>
           <br></br>
+          <div className="divider"></div>
           <li>
-            <Link><FaHome></FaHome> Home</Link>
+            <NavLink to="/">
+              <FaHome></FaHome> Home
+            </NavLink>
           </li>
           <li>
-            <Link><FcContacts></FcContacts>  Contact</Link>
+            <NavLink to="/dashboard/contact">
+              <FcContacts></FcContacts> Contact
+            </NavLink>
           </li>
           <li>
-            <Link><AiFillSetting></AiFillSetting> Sittings</Link>
+            <NavLink to="/dashboard/sitting">
+              <AiFillSetting></AiFillSetting> Sittings
+            </NavLink>
           </li>
           <li>
-            <Link> <FiLogOut></FiLogOut> Logout</Link>
+            <NavLink to="dashboard/logout">
+              <FiLogOut></FiLogOut> Logout
+            </NavLink>
           </li>
         </ul>
       </div>

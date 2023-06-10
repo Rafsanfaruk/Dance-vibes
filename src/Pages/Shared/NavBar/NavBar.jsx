@@ -46,7 +46,7 @@ const NavBar = () => {
         </Link>
       </li>
       <li>
-        <Link to="/dashboard/mycart">
+        <Link to="/dashboard/myselectedclasses">
           <button className="btn bg-gray-500 gap-2">
             <BiSelectMultiple />
             <div className="badge badge-primary badge-lg">+{cart?.length || 0}</div>

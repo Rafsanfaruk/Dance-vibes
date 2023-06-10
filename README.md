@@ -11,3 +11,6 @@
 
  # toast
   ---> https://github.com/fkhadra/react-toastify
+
+  # sweet alert 2
+   ---> https://sweetalert2.github.io/#usage
