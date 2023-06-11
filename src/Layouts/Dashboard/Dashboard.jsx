@@ -78,6 +78,11 @@ const Dashboard = () => {
                   <MdClass /> My Classes
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/dashboard/addclasses">
+                  <MdClass /> Add Classes
+                </NavLink>
+              </li>
             </>
           ) : (
             // User section

@@ -11,6 +11,8 @@ import MySelectedClasses from "../Pages/Dashboard/MySelectedClasses/MySelectedCl
 import MyEnrolledClasses from "../Pages/Dashboard/MyEnrolledClasses/MyEnrolledClasses";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
+import PrivateAdminRoute from "./PrivateAdminRoute";
+import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
 
 export const router = createBrowserRouter([
   {
@@ -18,49 +20,66 @@ export const router = createBrowserRouter([
     element: <Main></Main>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
-        {
-            path:'/',
-            element:<Home></Home>
-        },
-        {
-          path:'login',
-          element: <Login></Login>
-        },
-        {
-          path:"/registration",
-          element: <Registration></Registration>
-        },
-        {
-          path:'classes',
-          element: <Classes></Classes>
-        },
-        {
-          path:'instructors',
-          element: <InstructorsPage></InstructorsPage>
-            
-          
-        },
-
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/registration",
+        element: <Registration></Registration>,
+      },
+      {
+        path: "classes",
+        element: <Classes></Classes>,
+      },
+      {
+        path: "instructors",
+        element: <InstructorsPage></InstructorsPage>,
+      },
     ],
   },
   {
-    path:'dashboard',
-    element:<PrivateRoutes>
-     <Dashboard></Dashboard>,
-    </PrivateRoutes>,
-    children:[
+    path: "dashboard",
+    element: (
+      <PrivateRoutes>
+        <Dashboard></Dashboard>,
+      </PrivateRoutes>
+    ),
+    children: [
       {
-        path:'myselectedclasses',
-        element:<MySelectedClasses></MySelectedClasses>
+        path: "myselectedclasses",
+        element: (
+          <PrivateRoutes>
+            <MySelectedClasses></MySelectedClasses>,
+          </PrivateRoutes>
+        ),
       },
       {
-        path:'enrollclasses',
-        element: <MyEnrolledClasses></MyEnrolledClasses>
+        path: "enrollclasses",
+        element: (
+          <PrivateRoutes>
+            <MyEnrolledClasses></MyEnrolledClasses>,
+          </PrivateRoutes>
+        ),
       },
       {
-        path:'allusers',
-        element: <AllUsers></AllUsers>
+        path: "allusers",
+        element: (
+          <PrivateAdminRoute>
+            <AllUsers></AllUsers>
+          </PrivateAdminRoute>
+        ),
+      },
+      {
+        path:'manageclasses',
+        element: <PrivateAdminRoute>
+          <ManageClasses></ManageClasses>
+        </PrivateAdminRoute>
       }
-    ]
-  }
+    ],
+  },
 ]);
