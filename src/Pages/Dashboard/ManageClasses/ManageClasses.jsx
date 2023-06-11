@@ -127,14 +127,14 @@ const ManageClasses = () => {
                   {classItem.status === "pending" && (
                     <>
                       <button
-                        onClick={() => approveClass(classItem.id)}
+                        onClick={() => approveClass(classItem._id)}
                         disabled={classItem.status !== "pending"}
                         className="btn btn-primary"
                       >
                         Approve
                       </button>
                       <button
-                        onClick={() => denyClass(classItem.id)}
+                        onClick={() => denyClass(classItem._id)}
                         disabled={classItem.status !== "pending"}
                         className="btn btn-danger"
                       >
@@ -148,7 +148,7 @@ const ManageClasses = () => {
                       setShowModal(true);
                     }}
                     disabled={classItem.status === "pending"}
-                    className="btn btn-secondary"
+                    className="my-btn "
                   >
                     Send Feedback
                   </button>

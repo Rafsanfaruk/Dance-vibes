@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "./useAxiosSecure";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
-const useInstructors = () => {
-    const [instructorsData, setInstructorsData] = useState([]);
-    const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        fetch('http://localhost:5000/instructors')
-          .then((res) => res.json())
-          .then((data) => {
-           setInstructorsData(data);
-            setLoading(false);
-          });
-      }, []);
-    
-      return [instructorsData, loading];
-    };
+const useInstructor = () => {
+  const { user } = useContext(AuthContext);
+  const [axiosSecure] = useAxiosSecure();
+  const { data: isInstructor, isLoading: isInstructorLoading } = useQuery({
+    queryKey: ["isInstructor", user?.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/users/instructor/${user?.email}`);
+      console.log("is instructor response", res);
+      return res.data.instructor;
+    },
+  });
+  return [isInstructor, isInstructorLoading];
+};
 
-export default useInstructors;
+export default useInstructor;

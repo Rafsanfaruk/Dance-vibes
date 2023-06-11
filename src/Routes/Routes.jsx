@@ -13,6 +13,8 @@ import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
 import PrivateAdminRoute from "./PrivateAdminRoute";
 import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
+import PrivateInstructorRoute from "./PrivateInstructorRoute";
+import AddItemClasses from "../Pages/Dashboard/AddItemClasses/AddItemClasses";
 
 export const router = createBrowserRouter([
   {
@@ -75,11 +77,21 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path:'manageclasses',
-        element: <PrivateAdminRoute>
-          <ManageClasses></ManageClasses>
-        </PrivateAdminRoute>
-      }
+        path: "manageclasses",
+        element: (
+          <PrivateAdminRoute>
+            <ManageClasses></ManageClasses>
+          </PrivateAdminRoute>
+        ),
+      },
+      {
+        path: "additemclasses",
+        element: (
+          <PrivateInstructorRoute>
+            <AddItemClasses></AddItemClasses>
+          </PrivateInstructorRoute>
+        ),
+      },
     ],
   },
 ]);
