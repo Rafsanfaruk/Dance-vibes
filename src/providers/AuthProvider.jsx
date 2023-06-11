@@ -48,30 +48,57 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+ 
+  //   const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+  //     setUser(currentUser);
+  //     console.log("currentUser", currentUser);
+
+  //     // token
+  //     if (currentUser) {
+  //       axios
+  //         .post("http://localhost:5000/jwt", { email: currentUser.email })
+  //         .then((data) => {
+  //           // console.log(data.data.token);
+  //           localStorage.setItem("access token", data.data.token);
+  //           setLoading(false);
+  //         });
+
+  //     }
+  //     else{
+  //       localStorage.removeItem("access token");
+  //     }
+
+     
+  //   });
+  //   return () => {
+  //     return unSubscribe();
+  //   };
+  // }, []);
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("currentUser", currentUser);
+      // console.log("Current user", currentUser);
 
-      // token
-      if (currentUser) {
-        axios
-          .post("http://localhost:5000/jwt", { email: currentUser.email })
-          .then((data) => {
-            // console.log(data.data.token);
-            localStorage.setItem("access token", data.data.token);
-          });
-      }
-      else{
-        localStorage.removeItem("access token");
-      }
+      // get and set token
+     if(currentUser){
+      axios.post('http://localhost:5000/jwt',{email: currentUser.email})
+      .then( data => {
+        // console.log(data.data.token);
+        localStorage.setItem('access-token',data.data.token);
+        setLoading(false);
+      })
+     }
+     else{
+      localStorage.removeItem('access-token');
+     }
 
-      setLoading(false);
+      
     });
     return () => {
-      return unSubscribe();
+      return unsubscribe();
     };
   }, []);
+
 
   const authInfo = {
     user,

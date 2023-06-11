@@ -7,10 +7,10 @@ import Registration from "../Pages/Registration/Registration";
 import Classes from "../Pages/Classes/Classes";
 import InstructorsPage from "../Pages/InstructorPage/InstructorsPage";
 import PrivateRoutes from "./PrivateRoutes";
-import Dashboard from "../Layouts/Dashboard";
 import MySelectedClasses from "../Pages/Dashboard/MySelectedClasses/MySelectedClasses";
 import MyEnrolledClasses from "../Pages/Dashboard/MyEnrolledClasses/MyEnrolledClasses";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import Dashboard from "../Layouts/Dashboard/Dashboard";
 
 export const router = createBrowserRouter([
   {
@@ -36,9 +36,9 @@ export const router = createBrowserRouter([
         },
         {
           path:'instructors',
-          element: <PrivateRoutes>
-            <InstructorsPage></InstructorsPage>
-          </PrivateRoutes>
+          element: <InstructorsPage></InstructorsPage>
+            
+          
         },
 
     ],
@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
   {
     path:'dashboard',
     element:<PrivateRoutes>
-      <Dashboard></Dashboard>,
+     <Dashboard></Dashboard>,
     </PrivateRoutes>,
     children:[
       {
