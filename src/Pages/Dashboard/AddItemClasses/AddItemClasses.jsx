@@ -1,14 +1,53 @@
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { ToastContainer, toast } from "react-toastify";
+
+const img_hosting_token=import.meta.env.VITE_IMAGE_UPLOAD_TOKEN;
 
 const AddItemClasses = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [axiosSecure] =useAxiosSecure();
+  const { register, handleSubmit, formState: { errors } ,reset } = useForm();
 
+  const img_hosting_url =`https://api.imgbb.com/1/upload?key=${img_hosting_token}`
   const onSubmit = (data) => {
-    
-    console.log(data);
+    const formData =new FormData();
+    formData.append('image',data.image[0])
+    fetch(img_hosting_url, {
+      method: 'POST',
+      body: formData
+    })
+   .then( res => res.json())
+   .then(imgResponse => {
+      if(imgResponse.success){
+        const imgURL=imgResponse.data.display_url;
+        const {name,price,availableSeats,danceCategory,instructor,instructorEmail} =data;
+        const danceItem = {
+          name,
+          price: parseFloat(price),
+          availableSeats:parseFloat(availableSeats),
+          danceCategory,
+          instructor,
+          instructorEmail,
+          image: imgURL
+        };
+        console.log(danceItem);
+        axiosSecure.post('/classes',danceItem)
+        .then(data => {
+          console.log('after posting new dance item',data.data);
+          if(data.data.insertedId){
+            toast.success("Dance item added successfully!");
+            reset();
+          }
+        })
+        .catch(() =>{
+          toast.error("An error occurred while adding the dance item.");
+        })
+      }
+   })
+    // console.log(data);
   };
-
+  // console.log(img_hosting_token);
   return (
     <div>
       <Helmet>
@@ -25,7 +64,7 @@ const AddItemClasses = () => {
               type="text"
               placeholder="Type here"
               className="input input-bordered w-full max-w-xs"
-              {...register("className", { required: true })}
+              {...register("name", { required: true })}
             />
             {errors.className && <span className="text-red-500">Class name is required</span>}
           </div>
@@ -33,8 +72,8 @@ const AddItemClasses = () => {
             <label className="label">
               <span className="label-text">Dance Category</span>
             </label>
-            <select className="select select-bordered" {...register("danceCategory", { required: true })}>
-              <option disabled value="">Pick one</option>
+            <select className="select select-bordered" defaultValue="Pick One" {...register("danceCategory", { required: true })}>
+              <option disabled >Pick one</option>
               <option value="Ballet">Ballet</option>
               <option value="Hip Hop">Hip Hop</option>
               <option value="Salsa">Salsa</option>
@@ -44,7 +83,7 @@ const AddItemClasses = () => {
               <option value="Flamenco">Flamenco</option>
               <option value="TBelly Dance">TBelly Dance</option>
             </select>
-            {errors.danceCategory && <span className="text-red-500">Dance category is required</span>}
+            {errors.name && <span className="text-red-500">Dance category is required</span>}
           </div>
         </div>
         <div className="flex gap-5">
@@ -82,7 +121,7 @@ const AddItemClasses = () => {
               type="text"
               placeholder="Type here"
               className="input input-bordered w-full max-w-xs"
-              {...register("instructorName", { required: true })}
+              {...register("instructor", { required: true })}
             />
             {errors.instructorName && <span className="text-red-500">Instructor name is required</span>}
           </div>
@@ -106,11 +145,14 @@ const AddItemClasses = () => {
           <input
             type="file"
             className="file-input file-input-bordered w-full max-w-xs"
+            {...register("image", { required: true })}
+
           />
           <label className="label"></label>
         </div>
         <input className="my-btn mt-10 w-1/3" type="submit" value="Add Item" />
       </form>
+      <ToastContainer />
     </div>
   );
 };
