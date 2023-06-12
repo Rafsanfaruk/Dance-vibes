@@ -15,6 +15,11 @@ import PrivateAdminRoute from "./PrivateAdminRoute";
 import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
 import PrivateInstructorRoute from "./PrivateInstructorRoute";
 import AddItemClasses from "../Pages/Dashboard/AddItemClasses/AddItemClasses";
+import MyClasses from "../Pages/Dashboard/MyClasses/MyClasses";
+import UserHome from "../Pages/Dashboard/UserHome/UserHome";
+import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
+import InstructorHome from "../Pages/Dashboard/InstructorHome/InstructorHome";
+import Payment from "../Pages/Dashboard/Payment/payment";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +58,22 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
+        path: "userhome",
+        element: <UserHome></UserHome>,
+      },
+      {
+        path:'payment',
+        element: <Payment></Payment>
+      },
+      {
+        path: "adminhome",
+        element: (
+          <PrivateAdminRoute>
+            <AdminHome></AdminHome>
+          </PrivateAdminRoute>
+        ),
+      },
+      {
         path: "myselectedclasses",
         element: (
           <PrivateRoutes>
@@ -89,6 +110,22 @@ export const router = createBrowserRouter([
         element: (
           <PrivateInstructorRoute>
             <AddItemClasses></AddItemClasses>
+          </PrivateInstructorRoute>
+        ),
+      },
+      {
+        path: "myclasses",
+        element: (
+          <PrivateInstructorRoute>
+            <MyClasses></MyClasses>
+          </PrivateInstructorRoute>
+        ),
+      },
+      {
+        path: "instructorhome",
+        element: (
+          <PrivateInstructorRoute>
+            <InstructorHome></InstructorHome>
           </PrivateInstructorRoute>
         ),
       },

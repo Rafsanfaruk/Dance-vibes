@@ -17,3 +17,7 @@
    
    # Axios
    ---> https://axios-http.com/docs/intro
+
+   # payment
+
+   ---> https://github.com/stripe/react-stripe-js

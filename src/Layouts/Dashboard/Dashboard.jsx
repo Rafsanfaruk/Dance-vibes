@@ -7,10 +7,10 @@ import { AiFillSetting } from "react-icons/ai";
 import { MdClass } from "react-icons/md";
 import useCart from "../../hooks/useCart";
 import useAdmin from "../../hooks/useAdmin";
-import useInstructor from "../../hooks/useInstructor";
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import useInstructor from "../../hooks/useInstructors";
 
 const Dashboard = () => {
   const { user, loading } = useContext(AuthContext);

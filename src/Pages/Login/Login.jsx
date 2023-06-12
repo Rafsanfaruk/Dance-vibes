@@ -43,7 +43,7 @@ const Login = () => {
         toast.error("Login failed.");
       });
 
-    console.log(data);
+    // console.log(data);
   };
 
 

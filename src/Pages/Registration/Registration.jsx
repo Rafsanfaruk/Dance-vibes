@@ -48,7 +48,7 @@ const Registration = () => {
 
     // Show success toast
     toast.success("Registration successful!");
-    console.log(data);
+    // console.log(data);
     reset();
   };
 

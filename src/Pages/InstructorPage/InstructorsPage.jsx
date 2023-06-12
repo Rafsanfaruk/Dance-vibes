@@ -1,16 +1,37 @@
-
 import { Helmet } from 'react-helmet-async';
+import { useEffect, useState } from 'react';
 import SectionTitle from '../Shared/SectionTitle/SectionTitle';
 import Cover from '../Shared/Cover/Cover';
 import img from '../../assets/imges/cover/1.jpg';
-import useInstructors from '../../hooks/useInstructors';
 
 const InstructorsPage = () => {
-  const [instructorsData] =useInstructors();
+  const [instructors, setInstructors] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchInstructors = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/instructor');
+        const data = await response.json();
+        setInstructors(data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error fetching instructors:', error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchInstructors();
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <Helmet>
-        <title>Instruction</title>
+        <title>Instructors</title>
       </Helmet>
       <Cover
         img={img}
@@ -20,7 +41,7 @@ const InstructorsPage = () => {
       <SectionTitle heading="Our Instructors" subHeading="Your Instructors" />
       
       <div className="grid grid-cols-3 gap-4 mt-8">
-        {instructorsData.map((instructor) => (
+        {instructors.map((instructor) => (
           <div key={instructor._id} className="bg-white rounded-lg shadow p-6">
             <img
               src={instructor.image}

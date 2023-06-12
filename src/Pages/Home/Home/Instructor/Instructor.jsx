@@ -1,15 +1,25 @@
 // import React from 'react';
 
 
+
+import useInstructor from "../../../../hooks/useInstructors";
 import SectionTitle from "../../../Shared/SectionTitle/SectionTitle";
-import useInstructors from "../../../../hooks/useInstructors";
 
 const Instructor = () => {
-  const [instructorsData] =useInstructors();
-  const sortedInstructors = instructorsData.sort((a, b) => b.students - a.students);
+  const [isInstructor] = useInstructor();
 
-  // Get the top 6 instructors
-  const topInstructors = sortedInstructors.slice(0, 6);
+  // Check if instructorsData is defined
+  if (!isInstructor) {
+    return null;
+  }
+
+  // // Get the top 6 instructors by iterating through the array
+  // const topInstructors = isInstructor.reduce((acc, instructor) => {
+  //   if (acc.length < 6) {
+  //     acc.push(instructor);
+  //   }
+  //   return acc;
+  // }, []);
 
   return (
     <section>
@@ -18,7 +28,7 @@ const Instructor = () => {
         subHeading="Meet our talented instructors"
       />
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {topInstructors.map((instructor) => (
+        {/* {topInstructors.map((instructor) => (
           <div key={instructor._id} className="bg-white p-4 rounded shadow">
             <img
               src={instructor.image}
@@ -28,7 +38,7 @@ const Instructor = () => {
             <h3 className="text-xl font-semibold">{instructor.name}</h3>
             <p>Students: {instructor.students}</p>
           </div>
-        ))}
+        ))} */}
       </div>
     </section>
   );
