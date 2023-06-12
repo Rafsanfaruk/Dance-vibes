@@ -57,7 +57,7 @@ const Registration = () => {
       <Helmet>
         <title>Registration</title>
       </Helmet>
-      <div className="flex justify-center items-center  mt-10 mb-10">
+      <div className="flex justify-center items-center  mt-20 mb-10 ">
         <div className="max-w-md w-full px-4">
           <h1 className="text-3xl font-bold mt-8 mb-4">Registration Page</h1>
           <form onSubmit={handleSubmit(onSubmit)} className="max-w-md">

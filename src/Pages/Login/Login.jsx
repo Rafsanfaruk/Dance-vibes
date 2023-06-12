@@ -48,7 +48,7 @@ const Login = () => {
 
 
   return (
-    <div className="min-h-screen bg-gray-100 flex justify-center items-center">
+    <div className="min-h-screen bg-gray-100 flex justify-center items-center mt-20">
       <Helmet>
         <title>Login</title>
       </Helmet>
